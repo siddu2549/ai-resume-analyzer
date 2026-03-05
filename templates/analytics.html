@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Resume Analytics</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body{
+background:#0d1b2a;
+color:white;
+font-family:Arial;
+margin:0;
+padding:0;
+}
+
+/* PAGE CONTAINER */
+
+.container{
+width:85%;
+margin:auto;
+margin-top:60px;
+text-align:center;
+}
+
+/* TITLE */
+
+h1{
+color:#c9a84c;
+margin-bottom:30px;
+}
+
+/* STATS BOX */
+
+.stats-row{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+margin-bottom:40px;
+}
+
+.stat-box{
+background:#162032;
+padding:25px;
+border-radius:12px;
+min-width:220px;
+border:1px solid rgba(201,168,76,0.2);
+box-shadow:0 0 15px rgba(0,0,0,0.4);
+}
+
+.stat-title{
+font-size:14px;
+color:#9aa8b8;
+margin-bottom:8px;
+}
+
+.stat-value{
+font-size:32px;
+font-weight:bold;
+color:#e8c97a;
+}
+
+/* CHART BOX */
+
+.chart-box{
+background:#162032;
+padding:30px;
+border-radius:14px;
+margin-top:40px;
+border:1px solid rgba(201,168,76,0.15);
+}
+
+.chart-title{
+font-size:20px;
+margin-bottom:20px;
+color:#c9a84c;
+}
+
+canvas{
+max-width:100%;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Resume Analytics Dashboard</h1>
+
+<!-- STATISTICS -->
+
+<div class="stats-row">
+
+<div class="stat-box">
+<div class="stat-title">Total Resumes</div>
+<div class="stat-value">{{ total }}</div>
+</div>
+
+<div class="stat-box">
+<div class="stat-title">Average Score</div>
+<div class="stat-value">{{ average_score }}%</div>
+</div>
+
+</div>
+
+<!-- SCORE CHART -->
+
+<div class="chart-box">
+
+<div class="chart-title">Resume Score Analysis</div>
+
+<canvas id="scoreChart"></canvas>
+
+</div>
+
+<!-- SKILL CHART -->
+
+<div class="chart-box">
+
+<div class="chart-title">Skill Frequency</div>
+
+<canvas id="skillChart"></canvas>
+
+</div>
+
+</div>
+
+<script>
+
+/* SCORE DATA */
+
+const scores = [
+{% for r in resumes %}
+{{ r[1] }},
+{% endfor %}
+];
+
+const labels = [
+{% for r in resumes %}
+"{{ r[0] }}",
+{% endfor %}
+];
+
+/* SCORE CHART */
+
+const ctx = document.getElementById('scoreChart');
+
+new Chart(ctx, {
+
+type: 'bar',
+
+data: {
+labels: labels,
+
+datasets: [{
+label: 'Resume Score',
+data: scores
+}]
+
+},
+
+options:{
+scales:{
+y:{
+beginAtZero:true,
+max:100
+}
+}
+}
+
+});
+
+
+/* SKILL DATA */
+
+const skillNames = [
+{% for s in skill_names %}
+"{{ s }}",
+{% endfor %}
+];
+
+const skillValues = [
+{% for v in skill_values %}
+{{ v }},
+{% endfor %}
+];
+
+/* SKILL CHART */
+
+const skillCtx = document.getElementById('skillChart');
+
+new Chart(skillCtx, {
+
+type: 'bar',
+
+data:{
+labels: skillNames,
+
+datasets:[{
+label: 'Skill Frequency',
+data: skillValues
+}]
+}
+
+});
+
+</script>
+
+</body>
+</html>

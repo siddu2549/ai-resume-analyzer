@@ -508,12 +508,20 @@ footer p { font-size: 13px; color: #7a8899; }
     Resume<span>IQ</span>
   </div>
   <nav class="nav">
-    <a href="#">Features</a>
-    <a href="#">How It Works</a>
-    <a href="#">About</a>
-    <div class="live-pill">AI Live</div>
-    <button class="btn-header">Try Analyzer</button>
-  </nav>
+
+<a href="#" onclick="showSection('features')">Features</a>
+
+<a href="#" onclick="showSection('howitworks')">How It Works</a>
+
+<a href="#" onclick="showSection('about')">About</a>
+<a href="/analytics">Analytics</a>
+<div class="live-pill">AI Live</div>
+
+<button class="btn-header" onclick="showSection('uploadSection')">
+Try Analyzer
+</button>
+
+</nav>
 </header>
 
 <!-- ── HERO ── -->
@@ -527,6 +535,7 @@ footer p { font-size: 13px; color: #7a8899; }
     <div class="stat"><div class="stat-num">100%</div><div class="stat-lbl">Private &amp; Local</div></div>
   </div>
 </section>
+
 
 <!-- ── UPLOAD ── -->
 <div class="upload-section" id="uploadSection">
@@ -642,6 +651,10 @@ footer p { font-size: 13px; color: #7a8899; }
     </div>
   </div>
 </div>
+<!-- ── INFO SECTIONS ── -->
+
+    
+</section>
 
 <!-- ── FOOTER ── -->
 <footer>

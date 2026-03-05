@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Resume History</title>
+<link rel="stylesheet" href="/static/style.css">
+
+<style>
+
+
+body{
+background:#0d1b2a;
+font-family:Arial;
+color:white;
+}
+
+.history-container{
+width:80%;
+margin:auto;
+margin-top:80px;
+}
+
+.history-table{
+width:100%;
+border-collapse:collapse;
+margin-top:30px;
+background:#162032;
+border-radius:10px;
+overflow:hidden;
+}
+
+.history-table th{
+background:#0f1f35;
+color:#c9a84c;
+padding:16px;
+text-align:left;
+font-size:16px;
+}
+
+.history-table td{
+padding:14px;
+color:#ffffff;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.history-table tr:hover{
+background:#1c2b45;
+}
+
+
+.history-container{
+width:80%;
+margin:auto;
+margin-top:80px;
+color:white;
+}
+
+.history-table{
+width:100%;
+border-collapse:collapse;
+margin-top:30px;
+}
+
+.history-table th{
+background:#162032;
+padding:15px;
+color:#c9a84c;
+}
+
+.history-table td{
+padding:15px;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="history-container">
+
+<h1>Resume History</h1>
+
+<table class="history-table">
+
+<tr>
+<th>Filename</th>
+<th>Score</th>
+<th>Skills</th>
+<th>Date</th>
+</tr>
+
+{% for resume in resumes %}
+
+<tr>
+
+<td>{{ resume[0] }}</td>
+<td>{{ resume[1] }}%</td>
+<td>{{ resume[2] }}</td>
+<td>{{ resume[3] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>
