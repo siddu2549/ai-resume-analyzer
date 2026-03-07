@@ -4,6 +4,7 @@ ResumeIQ is an AI-powered web application that analyzes resumes and provides ins
 It helps job seekers improve their resumes to increase their chances of getting shortlisted by recruiters.
 
 ---
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/40814a13-ef81-4b3d-adf3-2e03be521c65" />
 
 ## ✨ Features
 
